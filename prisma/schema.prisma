@@ -52,27 +52,27 @@ model User {
 
 model rules {
   id Int @id @default(autoincrement())  
-  stockControl Boolean
-  lowStockAlert Boolean
-  registerProduct Boolean
-  disableProduct Boolean
-  editStock Boolean
-  usersRegisterd Boolean
-  stockList Boolean
-  editUser Boolean
-  dashboardInvoicing Boolean
-  recipes Boolean
+  stockControl Boolean @map("stock_Control")
+  lowStockAlert Boolean @map("low_Stock_Alert")
+  registerProduct Boolean @map("register_Product")
+  disableProduct Boolean @map("disable_Product")
+  editStock Boolean @map("edit_Stock")
+  usersRegisterd Boolean @map("users_Registerd")
+  stockList Boolean @map("stock_List")
+  editUser Boolean @map("edit_User")
+  dashboardInvoicing Boolean @map("dashboard_Invoicing")
+  recipes Boolean 
   pricing Boolean
-  newOffer Boolean
-  shopCart Boolean
-  myPurchases Boolean
+  newOffer Boolean @map("new_Offer")
+  shopCart Boolean @map("shop_Cart")
+  myPurchases Boolean @map("my_Purchases")
   profile Boolean
-  sumStock Boolean
-  disableUser Boolean
-  purchasingReport Boolean
-  userList Boolean
-  userStats Boolean
-  productStats Boolean
+  sumStock Boolean @map("sum_Stock")
+  disableUser Boolean @map("disable_User")
+  purchasingReport Boolean @map("purchasing_Report")
+  userList Boolean @map("user_List")
+  userStats Boolean @map("user_Stats")
+  productStats Boolean @map("product_Stats")
 
   createdAt DateTime
   updateAt DateTime
