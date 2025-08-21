@@ -12,11 +12,8 @@ datasource db {
 }
 
 model Cart{
-<<<<<<< HEAD
   id Int
-=======
   id Int @id @default(autoincrement())@
->>>>>>> c2175973870b717e6e13f82b815089d97f6cda73
 
   itemsSelected String @map("items_selected")
   removeAddItems String @map("remove_add_items")
@@ -58,14 +55,11 @@ model User {
 }
 
 model rules {
-<<<<<<< HEAD
   stockControl Boolean 
   lowStockAlert Boolean 
-=======
   id Int @id @default(autoincrement())  
   stockControl Boolean
   lowStockAlert Boolean
->>>>>>> c2175973870b717e6e13f82b815089d97f6cda73
   registerProduct Boolean
   disableProduct Boolean
   editStock Boolean
