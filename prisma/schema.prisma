@@ -73,6 +73,8 @@ model rules {
   disableUser Boolean
   purchasingReport Boolean
   userList Boolean
+  userStats Boolean
+  productStats Boolean
 
   createdAt DateTime
   updateAt DateTime
