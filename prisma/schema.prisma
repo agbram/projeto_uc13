@@ -12,7 +12,7 @@ datasource db {
 }
 
 model Cart{
-  id int
+  id Int @id @default(autoincrement())@
 
   items_selected String
   remove_add_items String
@@ -23,8 +23,7 @@ model Cart{
 }
 
 model payment{
-  id Int
-
+  id Int @id @default(autoincrement())
   pix String
   credit_card String
   status Boolean
@@ -32,15 +31,13 @@ model payment{
   user String
   date Date
   order_detail String
-  order id Int
-
+  order id Int @id @default(autoincrement())
   createdAt DateTime
   updatedAt DateTime
 }
 
 model User {
-  id Int
-
+  id Int @id @default(autoincrement())
   pass String
   email String
   name String
@@ -54,6 +51,7 @@ model User {
 }
 
 model rules {
+  id Int @id @default(autoincrement())  
   stockControl Boolean
   lowStockAlert Boolean
   registerProduct Boolean
@@ -81,7 +79,7 @@ model rules {
 }
 
 model Purchases{
-  id Int 
+  id Int @id @default(autoincrement())
 
   purchaseClientName String
   purchaseClientAddress String
@@ -98,8 +96,7 @@ model Purchases{
 }
 
 model Stock{
-  id Int
-  
+  id Int @id @default(autoincrement())  
   productName String
   productType String
   productPrice Double
