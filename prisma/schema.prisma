@@ -77,3 +77,35 @@ model rules {
   createdAt DateTime
   updateAt DateTime
 }
+
+model Purchases{
+  id Int 
+
+  purchaseClientName String
+  purchaseClientAddress String
+  purchasedProducts String
+  purchasePaymentForm String
+  purchasedQuantity Int
+  purchasePrice Double
+
+  isFinished Boolean
+  isShipped Boolean
+
+  createdAt DataTime
+  updatedAt DataTime
+}
+
+model Stock{
+  id Int
+  
+  productName String
+  productType String
+  productPrice Double
+
+  isInStock Boolean
+  amountInStock Int
+
+  createdAt DataTime
+  updatedAt DataTime
+
+}
