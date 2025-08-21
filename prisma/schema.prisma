@@ -12,7 +12,7 @@ datasource db {
 }
 
 model Cart{
-  id Int @id @default(autoincrement())@
+  id Int @id @default(autoincrement())
 
   items_selected String
   remove_add_items String
