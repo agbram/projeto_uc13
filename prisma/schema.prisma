@@ -10,3 +10,31 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
+model Cart{
+  id int
+
+  items_selected String
+  remove_add_items String
+  go_to_payment String
+
+  createdAt DateTime
+  updatedAt DateTime
+}
+
+model payment{
+  id Int
+
+  pix String
+  credit_card String
+  status Boolean
+  value Int
+  user String
+  date Date
+  order_detail String
+  order id Int
+
+  createdAt DateTime
+  updatedAt DateTime
+}
+
