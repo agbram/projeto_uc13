@@ -10,3 +10,43 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id Int
+
+  pass String
+  email String
+  name String
+  birth Date
+  creditCard String
+  address String
+  phone String
+
+  createdAt DateTime
+  updateAt DateTime 
+}
+
+model rules {
+  stockControl Boolean
+  lowStockAlert Boolean
+  registerProduct Boolean
+  disableProduct Boolean
+  editStock Boolean
+  usersRegisterd Boolean
+  stockList Boolean
+  editUser Boolean
+  dashboardInvoicing Boolean
+  recipes Boolean
+  pricing Boolean
+  newOffer Boolean
+  shopCart Boolean
+  myPurchases Boolean
+  profile Boolean
+  sumStock Boolean
+  disableUser Boolean
+  purchasingReport Boolean
+  userList Boolean
+
+  createdAt DateTime
+  updateAt DateTime
+}
