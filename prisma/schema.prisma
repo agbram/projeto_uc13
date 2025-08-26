@@ -49,7 +49,7 @@ model User {
   phone String
 
   createdAt DateTime @map("created_at") @default( now() )
-  updateAt DateTime 
+  updateAt DataTime @map("updated_at) @default( now() )
 
 }
 
@@ -78,7 +78,7 @@ model rules {
   productStats Boolean
 
   createdAt DateTime @map("created_at") @default( now() )
-  updateAt DateTime
+  updateAt DataTime @map("updated_at) @default( now() )
 
 }
 
