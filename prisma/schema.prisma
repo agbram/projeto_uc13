@@ -11,105 +11,100 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Cart{
+model Cart {
   id Int @id @default(autoincrement())
 
   items_selected String
   remove_add_items String
   go_to_payment String
 
-  createdAt DateTime @map("created_at") @default( now() )
-  updatedAt DateTime @map("updated_at) @default( now() )
-  
-  }
+  createdAt DateTime @map("created_at") @default(now())
+  updatedAt DateTime @map("updated_at") @updatedAt
+}
 
-model payment{
+model Payment {
   id Int @id @default(autoincrement())
   pix String
   credit_card String
   status Boolean
   value Int
   user String
-  date Date
+  date DateTime
   order_detail String
-  order id Int @id @default(autoincrement())
-  createdAt DateTime @map("created_at") @default( now() )
-  updatedAt DateTime @map("updated_at) @default( now() )
- 
-  }
+  order_id Int
+
+  createdAt DateTime @map("created_at") @default(now())
+  updatedAt DateTime @map("updated_at") @updatedAt
+}
 
 model User {
   id Int @id @default(autoincrement())
   pass String
   email String
   name String
-  birth Date
-  creditCard String
+  birth DateTime
+  creditCard String @map("credit_card")
   address String
   phone String
 
-  createdAt DateTime @map("created_at") @default( now() )
-  updateAt DateTime 
-
+  createdAt DateTime @map("created_at") @default(now())
+  updatedAt DateTime @map("updated_at") @updatedAt
 }
 
-model rules {
+model Rules {
   id Int @id @default(autoincrement())  
-  stockControl Boolean @map("stock_Control")
-  lowStockAlert Boolean @map("low_Stock_Alert")
-  registerProduct Boolean @map("register_Product")
-  disableProduct Boolean @map("disable_Product")
-  editStock Boolean @map("edit_Stock")
-  usersRegisterd Boolean @map("users_Registerd")
-  stockList Boolean @map("stock_List")
-  editUser Boolean @map("edit_User")
-  dashboardInvoicing Boolean @map("dashboard_Invoicing")
+  stockControl Boolean @map("stock_control")
+  lowStockAlert Boolean @map("low_stock_alert")
+  registerProduct Boolean @map("register_product")
+  disableProduct Boolean @map("disable_product")
+  editStock Boolean @map("edit_stock")
+  usersRegisterd Boolean @map("users_registerd")
+  stockList Boolean @map("stock_list")
+  editUser Boolean @map("edit_user")
+  dashboardInvoicing Boolean @map("dashboard_invoicing")
   recipes Boolean 
   pricing Boolean
-  newOffer Boolean @map("new_Offer")
-  shopCart Boolean @map("shop_Cart")
-  myPurchases Boolean @map("my_Purchases")
+  newOffer Boolean @map("new_offer")
+  shopCart Boolean @map("shop_cart")
+  myPurchases Boolean @map("my_purchases")
   profile Boolean
-  sumStock Boolean @map("sum_Stock")
-  disableUser Boolean @map("disable_User")
-  purchasingReport Boolean @map("purchasing_Report")
-  userList Boolean @map("user_List")
-  userStats Boolean @map("user_Stats")
-  productStats Boolean @map("product_Stats")
+  sumStock Boolean @map("sum_stock")
+  disableUser Boolean @map("disable_user")
+  purchasingReport Boolean @map("purchasing_report")
+  userList Boolean @map("user_list")
+  userStats Boolean @map("user_stats")
+  productStats Boolean @map("product_stats")
 
-  createdAt DateTime @map("created_at") @default( now() )
-  updateAt DateTime
-
+  createdAt DateTime @map("created_at") @default(now())
+  updatedAt DateTime @map("updated_at") @updatedAt
 }
 
-model Purchases{
+model Purchases {
   id Int @id @default(autoincrement())
 
-  purchaseClientName String
-  purchaseClientAddress String
-  purchasedProducts String
-  purchasePaymentForm String
-  purchasedQuantity Int
-  purchasePrice Double
+  purchaseClientName String @map("purchase_client_name")
+  purchaseClientAddress String @map("purchase_client_address")
+  purchasedProducts String @map("purchased_products")
+  purchasePaymentForm String @map("purchase_payment_form")
+  purchasedQuantity Int @map("purchased_quantity")
+  purchasePrice Float @map("purchase_price")
 
-  isFinished Boolean
-  isShipped Boolean
+  isFinished Boolean @map("is_finished")
+  isShipped Boolean @map("is_shipped")
 
-  createdAt DataTime @map("created_at") @default( now() )
-  updatedAt DataTime @map("updated_at) @default( now() )
-  
+  createdAt DateTime @map("created_at") @default(now())
+  updatedAt DateTime @map("updated_at") @updatedAt
 }
 
-model Stock{
+model Stock {
   id Int @id @default(autoincrement())  
-  productName String
-  productType String
-  productPrice Double
+  productName String @map("product_name")
+  productType String @map("product_type")
+  productPrice Float @map("product_price")
 
-  isInStock Boolean
-  amountInStock Int
+  isInStock Boolean @map("is_in_stock")
+  amountInStock Int @map("amount_in_stock")
 
-  createdAt DataTime @map("created_at") @default( now() )
-  updatedAt DataTime @map("updated_at) @default( now() )
-
+  createdAt DateTime @map("created_at") @default(now())
+  updatedAt DateTime @map("updated_at") @updatedAt
 }
