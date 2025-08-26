@@ -58,7 +58,7 @@ model Rules {
   registerProduct Boolean @map("register_product")
   disableProduct Boolean @map("disable_product")
   editStock Boolean @map("edit_stock")
-  usersRegisterd Boolean @map("users_registerd")
+  usersRegistered Boolean @map("users_registered")
   stockList Boolean @map("stock_list")
   editUser Boolean @map("edit_user")
   dashboardInvoicing Boolean @map("dashboard_invoicing")
