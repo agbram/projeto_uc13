@@ -72,8 +72,8 @@ model Rules {
   disableUser Boolean @map("disable_user")
   purchasingReport Boolean @map("purchasing_report")
   userList Boolean @map("user_list")
-  userStats Boolean @map("user_stats")
-  productStats Boolean @map("product_stats")
+  userStatus Boolean @map("user_status")
+  productStatus Boolean @map("product_status")
 
   createdAt DateTime @map("created_at") @default(now())
   updatedAt DateTime @map("updated_at") @updatedAt
