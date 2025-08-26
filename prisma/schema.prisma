@@ -46,6 +46,7 @@ model User {
   creditCard String @map("credit_card")
   address String
   phone String
+  permission String
 
   createdAt DateTime @map("created_at") @default(now())
   updatedAt DateTime @map("updated_at") @updatedAt
@@ -116,3 +117,5 @@ model Stock {
   createdAt DateTime @map("created_at") @default(now())
   updatedAt DateTime @map("updated_at") @updatedAt
 }
+
+
