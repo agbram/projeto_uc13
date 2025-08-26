@@ -51,6 +51,14 @@ model User {
   updatedAt DateTime @map("updated_at") @updatedAt
 }
 
+model Adm {
+  id Int @id @default(autoincrement()) 
+
+  permission 
+
+  
+}
+
 model Rules {
   id Int @id @default(autoincrement())  
   stockControl Boolean @map("stock_control")
