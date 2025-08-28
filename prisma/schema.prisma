@@ -52,9 +52,18 @@ model User {
   creditCard String @map("credit_card")
   address String
   phone String
+  permission String
 
   createdAt DateTime @map("created_at") @default(now())
   updatedAt DateTime @map("updated_at") @updatedAt
+}
+
+model Adm {
+  id Int @id @default(autoincrement()) 
+
+  permission 
+
+  
 }
 
 model Rules {
@@ -64,12 +73,13 @@ model Rules {
   registerProduct Boolean @map("register_product")
   disableProduct Boolean @map("disable_product")
   editStock Boolean @map("edit_stock")
-  usersRegisterd Boolean @map("users_registerd")
+  usersRegistered Boolean @map("users_registered")
   stockList Boolean @map("stock_list")
   editUser Boolean @map("edit_user")
   dashboardInvoicing Boolean @map("dashboard_invoicing")
   recipes Boolean 
   pricing Boolean
+  
   newOffer Boolean @map("new_offer")
   shopCart Boolean @map("shop_cart")
   myPurchases Boolean @map("my_purchases")
@@ -78,8 +88,8 @@ model Rules {
   disableUser Boolean @map("disable_user")
   purchasingReport Boolean @map("purchasing_report")
   userList Boolean @map("user_list")
-  userStats Boolean @map("user_stats")
-  productStats Boolean @map("product_stats")
+  userStatus Boolean @map("user_status")
+  productStatus Boolean @map("product_status")
 
   createdAt DateTime @map("created_at") @default(now())
   updatedAt DateTime @map("updated_at") @updatedAt
@@ -114,3 +124,5 @@ model Stock {
   createdAt DateTime @map("created_at") @default(now())
   updatedAt DateTime @map("updated_at") @updatedAt
 }
+
+
