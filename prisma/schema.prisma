@@ -73,6 +73,7 @@ model Rules {
   dashboardInvoicing Boolean @map("dashboard_invoicing")
   recipes Boolean 
   pricing Boolean
+  
   newOffer Boolean @map("new_offer")
   shopCart Boolean @map("shop_cart")
   myPurchases Boolean @map("my_purchases")
