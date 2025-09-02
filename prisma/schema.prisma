@@ -11,13 +11,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model Cart {
   id Int @id @default(autoincrement())
 
-  itemsSelected String @map("items_selected")
-  removeAddItems String @map("remove_add_items")
-  goToPayment String @map("go_to_payment")
+  productQuantity @map("product_quantity")
 
   createdAt DateTime @map("created_at") @default(now())
   updatedAt DateTime @map("updated_at") @updatedAt
@@ -34,14 +31,10 @@ model Cart {
 model Payment {
   id Int @id @default(autoincrement())
   pix String
-  creditCard String @map("credit_card")
+  credit_card String
   status Boolean
   value Int
   user String
-  date Date
-  orderDetail String @map("order_detail")
-  order id Int
-
   date DateTime
   order_detail String
    
@@ -58,7 +51,6 @@ model User {
   pass String
   email String
   name String
-  birth Date
   birth DateTime
   creditCard String @map("credit_card")
   address String
@@ -92,6 +84,14 @@ model Order {
 
 
   @@map("orders")
+}
+
+model Adm {
+  id Int @id @default(autoincrement()) 
+
+  permission 
+
+  
 }
 
 model Rules {
