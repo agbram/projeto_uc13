@@ -103,7 +103,7 @@ model Purchases {
   purchasedProducts String @map("purchased_products")
   purchasePaymentForm String @map("purchase_payment_form")
   purchasedQuantity Int @map("purchased_quantity")
-  purchasePrice Float @map("purchase_price")
+  purchasePrice Float @map("purchase_price") 
 
   isFinished Boolean @map("is_finished")
   isShipped Boolean @map("is_shipped")
@@ -124,5 +124,6 @@ model Stock {
   createdAt DateTime @map("created_at") @default(now())
   updatedAt DateTime @map("updated_at") @updatedAt
 }
+
 
 
