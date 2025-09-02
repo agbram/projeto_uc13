@@ -14,12 +14,18 @@ datasource db {
 model Cart {
   id Int @id @default(autoincrement())
 
-  items_selected String
-  remove_add_items String
-  go_to_payment String
+  productQuantity @map("product_quantity")
 
   createdAt DateTime @map("created_at") @default(now())
   updatedAt DateTime @map("updated_at") @updatedAt
+
+  stockId Int @map("stock_id")
+  stocks Stock @relation(fields:[stockId], references:[id])
+
+  orderId @map("order_id")
+  orders Order @relation(fields:[orderId], references:[id])
+
+  @@map("carts")
 }
 
 model Payment {
@@ -31,10 +37,13 @@ model Payment {
   user String
   date DateTime
   order_detail String
-  order_id Int
+   
 
   createdAt DateTime @map("created_at") @default(now())
   updatedAt DateTime @map("updated_at") @updatedAt
+
+  orders Order[]
+  @@map("payment")
 }
 
 model User {
@@ -50,6 +59,31 @@ model User {
 
   createdAt DateTime @map("created_at") @default(now())
   updatedAt DateTime @map("updated_at") @updatedAt
+
+  orders Order[]
+  @@map("users")
+
+}
+
+model Order {
+
+  id Int @id @default(autoincrement())
+
+  //preencher com informações
+
+  createdAt DateTime @map("created_at") @default(now())
+  updatedAt DateTime @map("updated_at") @updatedAt
+
+  userId Int @map("user_id")
+  users User @relation(fields:[userId], references: [id])
+
+  
+
+  paymentId Int  @map("payment_id")
+  payments Payment @relation(fields[paymentId], references: [id])
+
+
+  @@map("orders")
 }
 
 model Adm {
@@ -90,6 +124,8 @@ model Rules {
 }
 
 model Purchases {
+  //Tabela relatório pós compra
+
   id Int @id @default(autoincrement())
 
   purchaseClientName String @map("purchase_client_name")
@@ -117,6 +153,9 @@ model Stock {
 
   createdAt DateTime @map("created_at") @default(now())
   updatedAt DateTime @map("updated_at") @updatedAt
+
+  Carts Cart[]
+  @@map("stocks")
 }
 
 
