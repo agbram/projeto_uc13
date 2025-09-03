@@ -89,7 +89,7 @@ model Order {
   @@map("orders")
 }
 
-model Rules {
+model Rule {
   id Int @id @default(autoincrement())  
   stockControl Boolean @map("stock_control")
   lowStockAlert Boolean @map("low_stock_alert")
@@ -116,6 +116,8 @@ model Rules {
 
   createdAt DateTime @map("created_at") @default(now())
   updatedAt DateTime @map("updated_at") @updatedAt
+
+  @@map("rules")
 }
 //Bruno
 model Purchases {
