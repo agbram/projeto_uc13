@@ -82,7 +82,7 @@ model Order {
   paymentId Int  @map("payment_id")
   payments Payment @relation(fields:[paymentId], references: [id])
 
-
+  carts Cart[]
   @@map("orders")
 }
 
