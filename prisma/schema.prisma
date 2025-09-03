@@ -27,7 +27,7 @@ model Cart {
 
   @@map("carts")
 }
-
+//Bruno
 model Payment {
   id Int @id @default(autoincrement())
   pix String
@@ -114,7 +114,7 @@ model Rules {
   createdAt DateTime @map("created_at") @default(now())
   updatedAt DateTime @map("updated_at") @updatedAt
 }
-
+//Bruno
 model Purchases {
   //Tabela relatório pós compra
 
