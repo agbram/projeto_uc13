@@ -80,18 +80,10 @@ model Order {
   
 
   paymentId Int  @map("payment_id")
-  payments Payment @relation(fields[paymentId], references: [id])
+  payments Payment @relation(fields:[paymentId], references: [id])
 
-
+  carts Cart[]
   @@map("orders")
-}
-
-model Adm {
-  id Int @id @default(autoincrement()) 
-
-  permission 
-
-  
 }
 
 model Rules {
