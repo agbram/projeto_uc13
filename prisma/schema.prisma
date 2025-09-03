@@ -29,6 +29,7 @@ model Cart {
 
   @@map("carts")
 }
+
 //Bruno
 model Payment {
   id Int @id @default(autoincrement())
@@ -47,6 +48,7 @@ model Payment {
   orders Order[]
   @@map("payment")
 }
+
 //gustavo
 model User {
   id Int @id @default(autoincrement())
@@ -89,6 +91,7 @@ model Order {
   @@map("orders")
 }
 
+//gustavo
 model Rules {
   id Int @id @default(autoincrement())  
   stockControl Boolean @map("stock_control")
@@ -117,6 +120,7 @@ model Rules {
   createdAt DateTime @map("created_at") @default(now())
   updatedAt DateTime @map("updated_at") @updatedAt
 }
+
 //Bruno
 model Purchases {
   //Tabela relatório pós compra
@@ -137,6 +141,7 @@ model Purchases {
   updatedAt DateTime @map("updated_at") @updatedAt
 }
 
+//Jean Fiel
 model Stock {
   id Int @id @default(autoincrement())  
   productName String @map("product_name")
