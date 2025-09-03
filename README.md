@@ -1,0 +1,1 @@
+Inicializando o projeto com a estrutura de pastas
