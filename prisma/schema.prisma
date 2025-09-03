@@ -14,7 +14,7 @@ datasource db {
 model Cart {
   id Int @id @default(autoincrement())
 
-  productQuantity @map("product_quantity")
+  productQuantity Int @map("product_quantity")
 
   createdAt DateTime @map("created_at") @default(now())
   updatedAt DateTime @map("updated_at") @updatedAt
@@ -22,7 +22,7 @@ model Cart {
   stockId Int @map("stock_id")
   stocks Stock @relation(fields:[stockId], references:[id])
 
-  orderId @map("order_id")
+  orderId Int @map("order_id")
   orders Order @relation(fields:[orderId], references:[id])
 
   @@map("carts")
@@ -80,18 +80,10 @@ model Order {
   
 
   paymentId Int  @map("payment_id")
-  payments Payment @relation(fields[paymentId], references: [id])
+  payments Payment @relation(fields:[paymentId], references: [id])
 
 
   @@map("orders")
-}
-
-model Adm {
-  id Int @id @default(autoincrement()) 
-
-  permission 
-
-  
 }
 
 model Rules {
