@@ -4,3 +4,5 @@
     const route = Router();
 
     route.post("/", PaymentController.store)
+
+    export default route;

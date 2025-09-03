@@ -3,4 +3,6 @@ import { Router } from `express`;
 
     const route = Router();
 
-    route.post(`/`, PaymentController.store)
+    route.post(`/`, PurchasesController.store)
+    
+    export default route;
