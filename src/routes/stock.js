@@ -1,6 +1,6 @@
 // Stock routes
 import { Router } from "express";
-import {StockController} from '../controllers/stock'
+import {StockController} from '../controllers/stock.js'
 
 const route = Router();
 

@@ -1,5 +1,5 @@
 // jean
-import  prisma from '../prisma'
+import  prisma from '../prisma.js'
 
 export const OrderController = {
     async store(req, res, next){

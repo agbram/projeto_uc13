@@ -2,15 +2,30 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 
-import { PaymentController } from "./controllers/payment"; 
-import { PurchasesController } from "./controllers/purchases";
+// Bruno
+import { PaymentRoutes } from "./routes/payment.js"; 
+import { PurchasesRoutes } from "./routes/purchases.js";
+
+// Jean
+import { CartRoutes } from "./routes/cart.js"
+import { OrderRoutes } from "./routes/order.js";
+import { StockRoutes } from "./routes/stock.js";
+
+// Gustavo
+import { UserRoutes } from "./routes/user.js";
+import { RuleRoutes } from "./routes/rule.js";
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/payments", paymentRoutes);
+app.use("/payments", PaymentRoutes);
 app.use("/purchases", PurchasesRoutes)
+app.use("/carts", CartRoutes)
+app.use("/orders", OrderRoutes)
+app.use("/stocks", StockRoutes)
+app.use("/users", UserRoutes)
+app.use("/Rule", RuleRoutes)
 
 app.use((err, _req, res, _next) => {
     console.error(err);
@@ -30,8 +45,3 @@ app.use((err, _req, res, _next) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
-
-
-    
- 
-    

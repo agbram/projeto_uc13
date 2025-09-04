@@ -1,5 +1,5 @@
-import prisma from "../prisma";
-
+// Bruno
+import prisma from '../prisma.js';
 
 //asincrino nome_da função(recebendo, respoder, proximo)
 export const PaymentController = { 

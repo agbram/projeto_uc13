@@ -1,5 +1,5 @@
 //gustavo
-import prisma from "../prisma";
+import prisma from "../prisma.js";
 
 //assincrona nome_da_funcao(requisicao, resposta, proximo)
 export const UserController = {

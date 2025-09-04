@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { RuleController } from "../controllers/rule";
+import { RuleController } from "../controllers/rule.js";
 
 const route = Router();
 

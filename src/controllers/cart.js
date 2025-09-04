@@ -1,5 +1,5 @@
 // jean
-
+import  prisma from '../prisma.js'
 // assincrono nome_da_função(recebendo, responder, proximo)
 export const CartController = {
     async store(req, res, next){

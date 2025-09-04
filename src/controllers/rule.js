@@ -1,5 +1,6 @@
 //gustavo
-import prisma from "../prisma";
+
+import prisma from "../prisma.js";
 
 export const RuleController = {
   async store(req, res, next) {
