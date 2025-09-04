@@ -1,9 +1,8 @@
-// Cart routes
 import { Router } from "express";
-import { CartController } from '../controllers/cart.js'
+import { CartController } from "../controllers/cart.js";
 
-const route = Router();
+const router = Router();
 
-route.post("/", CartController.store);
+router.post("/", CartController.store);
 
-export default route;
+export default router;

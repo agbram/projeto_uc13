@@ -1,9 +1,8 @@
-// Stock routes
 import { Router } from "express";
-import {StockController} from '../controllers/stock.js'
+import { StockController } from '../controllers/stock.js';
 
-const route = Router();
+const router = Router();
 
-route.post('/', StockController.store);
+router.post('/', StockController.store);
 
-export default route;
+export default router;

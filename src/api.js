@@ -2,30 +2,26 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 
-// Bruno
-import { PaymentRoutes } from "./routes/payment.js";
-import { PurchasesRoutes } from "./routes/purchase.js";
-
-// Jean
-import { CartRoutes } from "./routes/cart.js";
-import { OrderRoutes } from "./routes/order.js";
-import { StockRoutes } from "./routes/stock.js";
-
-// Gustavo
-import { UserRoutes } from "./routes/user.js";
-import { RuleRoutes } from "./routes/rule.js";
+// Routes
+import paymentRoutes from "./routes/payment.js";
+import purchaseRoutes from "./routes/purchase.js";
+import cartRoutes from "./routes/cart.js";
+import orderRoutes from "./routes/order.js";
+import stockRoutes from "./routes/stock.js";
+import userRoutes from "./routes/user.js";
+import ruleRoutes from "./routes/rule.js";
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/payments", PaymentRoutes);
-app.use("/purchases", PurchasesRoutes);
-app.use("/carts", CartRoutes);
-app.use("/orders", OrderRoutes);
-app.use("/stocks", StockRoutes);
-app.use("/users", UserRoutes);
-app.use("/Rules", RuleRoutes);
+app.use("/payments", paymentRoutes);
+app.use("/purchases", purchaseRoutes);
+app.use("/carts", cartRoutes);
+app.use("/orders", orderRoutes);
+app.use("/stocks", stockRoutes);
+app.use("/users", userRoutes);
+app.use("/rules", ruleRoutes); // Changed from "Rules" to "rules" for consistency
 
 app.use((err, _req, res, _next) => {
   console.error(err);

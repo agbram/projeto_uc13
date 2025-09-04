@@ -1,8 +1,6 @@
 {
   "name": "projeto_integrador",
   "version": "1.0.0",
-  "description": "",
-  "type": "module",
   "main": "src/api.js",
   "keywords": [],
   "author": "",
@@ -17,10 +15,8 @@
     "studio": "prisma studio",
     "test": "echo \"No tests\""
   },
-
-
   "dependencies": {
-    "@prisma/client": "^6.15.0",
+    "@prisma/client": "^5.0.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
@@ -28,6 +24,6 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.10",
-    "prisma": "^6.15.0"
+    "prisma": "^5.0.0"
   }
 }
