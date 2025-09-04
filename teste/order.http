@@ -1,0 +1,7 @@
+POST https://localhost:3000/orders HTTP/1.1
+content-type: application/json
+
+{
+    "userId": 765,
+    "paymentId": 09876
+}
