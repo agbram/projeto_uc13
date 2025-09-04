@@ -3,6 +3,6 @@ import { RuleController } from "../controllers/rule.js";
 
 const route = Router();
 
-route.post('/', RuleController.store);
+route.post("/", RuleController.store);
 
 export default route;

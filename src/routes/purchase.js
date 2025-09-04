@@ -1,8 +1,8 @@
 import { Router } from "express";
-    import {PurchasesController} from "../controllers/purchases.js"
+    import {PurchaseController} from "../controllers/purchase.js"
 
     const route = Router();
 
-    route.post(`/`, PurchasesController.store)
+    route.post("/", PurchaseController.store)
     
     export default route;
