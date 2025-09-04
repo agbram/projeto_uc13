@@ -1,8 +1,8 @@
-    import { Router } from "express";
-    import {PaymentController} from "../controllers/payment.js"
+import { Router } from "express";
+import { PaymentController } from "../controllers/payment.js";
 
-    const route = Router();
+const router = Router();
 
-    route.post("/", PaymentController.store)
+router.post("/", PaymentController.store);
 
-    export default route;
+export default router;

@@ -1,8 +1,8 @@
 import { Router } from "express";
 import { RuleController } from "../controllers/rule.js";
 
-const route = Router();
+const router = Router();
 
-route.post("/", RuleController.store);
+router.post("/", RuleController.store);
 
-export default route;
+export default router;

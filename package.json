@@ -1,9 +1,8 @@
 {
   "name": "projeto_integrador",
   "version": "1.0.0",
-  "description": "",
-  "type": "module",
   "main": "src/api.js",
+  "type": "module", 
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -17,8 +16,6 @@
     "studio": "prisma studio",
     "test": "echo \"No tests\""
   },
-
-
   "dependencies": {
     "@prisma/client": "^6.15.0",
     "cors": "^2.8.5",
