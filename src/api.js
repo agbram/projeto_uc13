@@ -4,7 +4,7 @@ import cors from "cors";
 
 // Bruno
 import { PaymentRoutes } from "./routes/payment.js";
-import { PurchasesRoutes } from "./routes/purchases.js";
+import { PurchasesRoutes } from "./routes/purchase.js";
 
 // Jean
 import { CartRoutes } from "./routes/cart.js";
@@ -25,7 +25,7 @@ app.use("/carts", CartRoutes);
 app.use("/orders", OrderRoutes);
 app.use("/stocks", StockRoutes);
 app.use("/users", UserRoutes);
-app.use("/Rule", RuleRoutes);
+app.use("/Rules", RuleRoutes);
 
 app.use((err, _req, res, _next) => {
   console.error(err);

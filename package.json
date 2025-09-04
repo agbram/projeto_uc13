@@ -1,14 +1,24 @@
 {
   "name": "projeto_integrador",
   "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "",
+  "type": "module",
+  "main": "src/api.js",
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "scripts": {
+    "dev": "nodemon src/api.js",
+    "start": "node src/api.js",
+    "migrate": "prisma migrate dev",
+    "reset": "prisma migrate reset --force",
+    "push": "prisma db push",
+    "generate": "prisma generate",
+    "studio": "prisma studio",
+    "test": "echo \"No tests\""
+  },
+
+
   "dependencies": {
     "@prisma/client": "^6.15.0",
     "cors": "^2.8.5",
