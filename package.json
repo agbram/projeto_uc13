@@ -2,6 +2,7 @@
   "name": "projeto_integrador",
   "version": "1.0.0",
   "main": "src/api.js",
+  "type": "module", 
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -16,7 +17,7 @@
     "test": "echo \"No tests\""
   },
   "dependencies": {
-    "@prisma/client": "^5.0.0",
+    "@prisma/client": "^6.15.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
@@ -24,6 +25,6 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.10",
-    "prisma": "^5.0.0"
+    "prisma": "^6.15.0"
   }
 }
