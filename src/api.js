@@ -21,7 +21,7 @@ app.use("/carts", cartRoutes);
 app.use("/orders", orderRoutes);
 app.use("/stocks", stockRoutes);
 app.use("/users", userRoutes);
-app.use("/rules", ruleRoutes); // Changed from "Rules" to "rules" for consistency
+app.use("/rules", ruleRoutes); 
 
 app.use((err, _req, res, _next) => {
   console.error(err);

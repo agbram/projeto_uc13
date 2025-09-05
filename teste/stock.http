@@ -1,10 +1,10 @@
-        POST https://localhost:3000/stocks HTTP/1.1
+POST http://localhost:3000/stocks HTTP/1.1
 content-type: application/json
         
         {
-        "productName,": "Bolo de urânio",
-        "productType,": "Bolo",
-        "productPrice,": 123, 
-        "isInStock,": true,
-        "amountInStock,": 1234
+        "productName": "Bolo de cenoura",
+        "productType": "Bolo",
+        "productPrice": 18, 
+        "isInStock": true,
+        "amountInStock": 15
         }

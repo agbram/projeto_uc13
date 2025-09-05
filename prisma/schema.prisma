@@ -10,21 +10,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 //Jean Fiel
 model Cart {
   id Int @id @default(autoincrement())
-
   productQuantity Int @map("product_quantity")
 
   createdAt DateTime @map("created_at") @default(now())
   updatedAt DateTime @map("updated_at") @updatedAt
 
   stockId Int @map("stock_id")
-  stocks Stock @relation(fields:[stockId], references:[id])
+  stock Stock @relation(fields:[stockId], references:[id])
 
-  orderId Int @map("order_id")
-  orders Order @relation(fields:[orderId], references:[id])
+  orderId Int? @map("order_id")
+  order Order? @relation(fields:[orderId], references:[id]) 
 
   @@map("carts")
 }
@@ -39,7 +37,6 @@ model Payment {
   user String
   date DateTime
   order_detail String
-   
 
   createdAt DateTime @map("created_at") @default(now())
   updatedAt DateTime @map("updated_at") @updatedAt
@@ -65,26 +62,20 @@ model User {
 
   orders Order[]
   @@map("users")
-
 }
 
 //Jean Fiel
 model Order {
-
   id Int @id @default(autoincrement())
-
-  //preencher com informações
 
   createdAt DateTime @map("created_at") @default(now())
   updatedAt DateTime @map("updated_at") @updatedAt
 
   userId Int @map("user_id")
-  users User @relation(fields:[userId], references: [id])
+  user User @relation(fields:[userId], references: [id])
 
-  
-
-  paymentId Int  @map("payment_id")
-  payments Payment @relation(fields:[paymentId], references: [id])
+  paymentId Int? @map("payment_id") // ✅ Tornar opcional
+  payment Payment? @relation(fields:[paymentId], references: [id]) // ✅ Opcional
 
   carts Cart[]
   @@map("orders")
@@ -123,9 +114,7 @@ model Rule {
 }
 
 //Bruno
-model Purchases {
-  //Tabela relatório pós compra
-
+model Purchase { // ✅ Mudei para singular (convenção Prisma)
   id Int @id @default(autoincrement())
 
   purchaseClientName String @map("purchase_client_name")
@@ -140,6 +129,8 @@ model Purchases {
 
   createdAt DateTime @map("created_at") @default(now())
   updatedAt DateTime @map("updated_at") @updatedAt
+
+  @@map("purchases")
 }
 
 //Jean Fiel
@@ -155,9 +146,6 @@ model Stock {
   createdAt DateTime @map("created_at") @default(now())
   updatedAt DateTime @map("updated_at") @updatedAt
 
-  Carts Cart[]
+  carts Cart[]
   @@map("stocks")
 }
-
-
-

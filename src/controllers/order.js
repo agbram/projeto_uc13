@@ -9,7 +9,9 @@ export const OrderController = {
       const order = await prisma.stock.create({
         data: {
           userId,
-          paymentId,
+          carts: {
+            connect: {id: cart.id}
+          },
         },
       });
       //respondendo com status 201-criado e encapsulando no formato json(product)

@@ -35,7 +35,7 @@ export const UserController = {
       res.status(201).json(u);
       //mensagem de erro
     } catch (err) {
-      console.error("Erro details:", err);
+      console.error("Error details:", err);
       next(err);
     }
   },

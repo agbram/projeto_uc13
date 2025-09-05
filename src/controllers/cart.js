@@ -1,19 +1,25 @@
-// jean
 import prisma from "../prisma.js";
-// assincrono nome_da_função(recebendo, responder, proximo)
+
 export const CartController = {
   async store(req, res, next) {
     try {
-      const { productQuantity, stockId, orderId } = req.body;
+      const { productQuantity, stockId } = req.body;
 
-      const cart = await prisma.stock.create({
-        data: {
-          productQuantity,
-          stockId,
-          orderId,
-        },
+       const stockExists = await prisma.stock.findUnique({
+        where: { id: parseInt(stockId) }
       });
-      //respondendo com status 201-criado e encapsulando no formato json(product)
+
+      if (!stockExists) {
+        return res.status(404).json({ error: "Stock não encontrado" });
+      }
+      
+      const cart = await prisma.cart.create({
+        data: {
+          productQuantity: parseInt(productQuantity), 
+          stockId: parseInt(stockId), 
+          },
+      });
+
       res.status(201).json(cart);
     } catch (err) {
       next(err);
