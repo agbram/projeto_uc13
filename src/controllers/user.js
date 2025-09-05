@@ -4,6 +4,7 @@ import prisma from "../prisma.js";
 //assincrona nome_da_funcao(requisicao, resposta, proximo)
 export const UserController = {
   async store(req, res, next) {
+    console.log("Request body: ", req.body);
     try {
       //procurando
       const {
@@ -14,7 +15,7 @@ export const UserController = {
         creditCard,
         address,
         phone,
-        permission,
+        permission
       } = req.body;
 
       //guardando
@@ -23,16 +24,18 @@ export const UserController = {
           pass,
           email,
           name,
-          birth,
+          birth: new Date(birth),
           creditCard,
           address,
           phone,
-          permission,
+          permission: Boolean(permission)
         },
       });
+      console.log("User created:", u);
       res.status(201).json(u);
       //mensagem de erro
     } catch (err) {
+      console.error("Erro details:", err);
       next(err);
     }
   },

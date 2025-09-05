@@ -1,0 +1,13 @@
+POST http://localhost:3000/users HTTP/1.1
+content-type: application/json
+
+{
+  "pass": "123456",
+    "email": "jean@teste.com",
+    "name": "Jean",
+    "birth": "2004-12-05",
+    "creditCard": "1234567890123456",
+    "address": "Rua Geraldinho, 321",
+    "phone": "1640028922",
+    "permission": true
+}
