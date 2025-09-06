@@ -3,5 +3,5 @@ content-type: application/json
 
 {
     "productQuantity": 15,
-    "stockId": 2
+    "stockId": 1
 }
