@@ -10,6 +10,7 @@ import orderRoutes from "./routes/order.js";
 import stockRoutes from "./routes/stock.js";
 import userRoutes from "./routes/user.js";
 import ruleRoutes from "./routes/rule.js";
+import userRuleRoutes from "./routes/userRule.js"
 
 const app = express();
 app.use(cors());
@@ -22,6 +23,7 @@ app.use("/orders", orderRoutes);
 app.use("/stocks", stockRoutes);
 app.use("/users", userRoutes);
 app.use("/rules", ruleRoutes); 
+app.use("/userRules", userRuleRoutes)
 
 app.use((err, _req, res, _next) => {
   console.error(err);

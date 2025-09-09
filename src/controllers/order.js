@@ -1,22 +1,55 @@
-// jean
 import prisma from "../prisma.js";
 
 export const OrderController = {
   async store(req, res, next) {
     try {
-      const { userId, paymentId } = req.body;
+      const { userId, paymentId, cartIds } = req.body;
 
-      const order = await prisma.stock.create({
+      // valida usuário
+      const userExists = await prisma.user.findUnique({
+        where: { id: parseInt(userId) },
+      });
+      if (!userExists) {
+        return res.status(404).json({ error: "Usuário não encontrado" });
+      }
+
+      // valida pagamento se informado
+      if (paymentId) {
+        const paymentExists = await prisma.payment.findUnique({
+          where: { id: parseInt(paymentId) },
+        });
+        if (!paymentExists) {
+          return res.status(404).json({ error: "Pagamento não encontrado" });
+        }
+      }
+
+      // valida carts
+      if (!Array.isArray(cartIds) || cartIds.length === 0) {
+        return res
+          .status(400)
+          .json({ error: "cartIds precisa ser um array com pelo menos um id" });
+      }
+
+      const cartsToConnect = cartIds.map((id) => ({ id: parseInt(id) }));
+
+      const order = await prisma.order.create({
         data: {
-          userId,
+          userId: parseInt(userId),
+          paymentId: paymentId ? parseInt(paymentId) : null,
           carts: {
-            connect: {id: cart.id}
+            connect: cartsToConnect,
           },
         },
+        include: {
+          carts: true,
+          user: true,
+          payment: true,
+        },
       });
-      //respondendo com status 201-criado e encapsulando no formato json(product)
+
       res.status(201).json(order);
     } catch (err) {
+      console.error(err); // ajuda a ver o erro real no console
       next(err);
     }
   },

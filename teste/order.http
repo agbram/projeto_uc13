@@ -3,5 +3,6 @@ content-type: application/json
 
 {
     "userId": 1,
-    "paymentId": 1
+    "paymentId": 1,
+    "cartIds": [1]
 }

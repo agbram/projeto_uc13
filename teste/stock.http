@@ -2,9 +2,9 @@ POST http://localhost:3000/stocks HTTP/1.1
 content-type: application/json
         
         {
-        "productName": "Bolo de cenoura",
+        "productName": "Bolo de chocolate",
         "productType": "Bolo",
-        "productPrice": 18, 
+        "productPrice": 20, 
         "isInStock": true,
-        "amountInStock": 15
+        "amountInStock": 30
         }

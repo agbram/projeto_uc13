@@ -2,12 +2,13 @@ POST http://localhost:3000/users HTTP/1.1
 content-type: application/json
 
 {
-  "pass": "teste",
-    "email": "teste@teste.com",
-    "name": "teste",
-    "birth": "2005-07-17",
-    "creditCard": "1234567890123456",
-    "address": "teste",
-    "phone": "16999999999",
-    "permission": true
+  "pass": "123456",
+  "email": "admin@teste.com",
+  "name": "admin",
+  "birth": "2010-04-16",
+  "creditCard": "99999999999999",
+  "address": "Rua Eclesiastes",
+  "phone": "1199999999",
+  "permission": true
 }
+

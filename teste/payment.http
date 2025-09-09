@@ -1,0 +1,12 @@
+POST http://localhost:3000/payments
+Content-Type: application/json
+
+{
+  "pix": "chavepix@exemplo.com",
+  "credit_card": "4111111111111111",
+  "status": true,
+  "value": 200,
+  "user": "fulano@exemplo.com",
+  "date": "2025-09-09T10:00:00.000Z",
+  "order_detail": "Compra de teste"
+}
