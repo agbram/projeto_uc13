@@ -2,7 +2,7 @@ POST http://localhost:3000/orders HTTP/1.1
 content-type: application/json
 
 {
-    "userId": 2,
-    "paymentId": null,
-    "cartIds": [2]
+    "userId": ,
+    "paymentId": ,
+    "cartIds": []
 }

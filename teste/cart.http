@@ -2,6 +2,6 @@ POST http://localhost:3000/carts HTTP/1.1
 content-type: application/json
 
 {
-    "productQuantity": 10,
-    "stockId": 2
+    "productQuantity": ,
+    "stockId": 
 }
