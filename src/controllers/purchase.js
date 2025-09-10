@@ -2,71 +2,75 @@
 import prisma from "../prisma.js";
 
 export const PurchaseController = {
-  // cria a purchase
+  // cria uma purchase a partir de um order
   async store(req, res, next) {
     try {
-      const {
-        purchaseClientName,
-        purchaseClientAddress,
-        purchasedProducts,
-        purchasePaymentForm,
-        purchasedQuantity,
-        purchasePrice,
-        isFinished = false,
-        isShipped = false,
-      } = req.body;
+      const { orderId } = req.body;
 
-      // validações básicas
-      if (!purchaseClientName || !purchaseClientAddress) {
-        return res.status(400).json({ error: "Nome e endereço do cliente são obrigatórios." });
+      if (!orderId) {
+        return res.status(400).json({ error: "orderId é obrigatório." });
       }
 
-      if (typeof purchasedProducts === "undefined" || purchasedProducts === null) {
-        return res.status(400).json({ error: "purchasedProducts é obrigatório." });
-      }
-
-      // validar e parsear números
-      const qtd = parseInt(purchasedQuantity);
-      const price = parseFloat(purchasePrice);
-
-      if (isNaN(qtd) || qtd < 0) {
-        return res.status(400).json({ error: "purchasedQuantity inválido." });
-      }
-      if (isNaN(price) || price < 0) {
-        return res.status(400).json({ error: "purchasePrice inválido." });
-      }
-
-      // Se vier array, transforma em JSON string (schema atual usa String)
-      const productsField = Array.isArray(purchasedProducts)
-        ? JSON.stringify(purchasedProducts)
-        : String(purchasedProducts);
-
-      const p = await prisma.purchase.create({
-        data: {
-          purchaseClientName,
-          purchaseClientAddress,
-          purchasedProducts: productsField,
-          purchasePaymentForm: purchasePaymentForm || "",
-          purchasedQuantity: qtd,
-          purchasePrice: price,
-          isFinished: Boolean(isFinished),
-          isShipped: Boolean(isShipped),
+      // busca o order e inclui os relacionamentos
+      const order = await prisma.order.findUnique({
+        where: { id: parseInt(orderId) },
+        include: {
+          carts: { include: { stock: true } },
+          payment: true,
+          user: true,
         },
       });
 
-      return res.status(201).json(p);
+      if (!order) {
+        return res.status(404).json({ error: "Order não encontrado." });
+      }
+
+      // monta o array de produtos do carrinho
+      const items = order.carts.map(c => ({
+        product: c.stock.productName,
+        quantity: c.productQuantity,
+        price: c.stock.productPrice,
+      }));
+
+      // calcula totais
+      const totalQuantity = items.reduce((acc, p) => acc + p.quantity, 0);
+      const totalPrice = items.reduce((acc, p) => acc + p.quantity * p.price, 0);
+
+      // cria a purchase com itens
+      const purchase = await prisma.purchase.create({
+        data: {
+          userId: order.userId,
+          orderId: order.id,
+          purchasePaymentForm: order.payment?.credit_card ? "credit_card" : "pix",
+          purchasedQuantity: totalQuantity,
+          purchasePrice: totalPrice,
+          isFinished: true,
+          isShipped: false,
+          items: {
+            create: items,
+          },
+        },
+        include: {
+          items: true,
+          user: true,
+          order: true,
+        },
+      });
+
+      return res.status(201).json(purchase);
     } catch (err) {
       console.error("PurchaseController.store error:", err);
       return next(err);
     }
   },
 
-  // lista (simples)
+  // lista todas as purchases
   async index(req, res, next) {
     try {
       const purchases = await prisma.purchase.findMany({
         orderBy: { createdAt: "desc" },
         take: 100,
+        include: { user: true, items: true, order: true },
       });
       return res.json(purchases);
     } catch (err) {
@@ -75,24 +79,19 @@ export const PurchaseController = {
     }
   },
 
-  // mostra uma purchase específica (com purchasedProducts já parseado)
+  // mostra uma purchase específica
   async show(req, res, next) {
     try {
       const id = parseInt(req.params.id);
       if (isNaN(id)) return res.status(400).json({ error: "ID inválido" });
 
-      const purchase = await prisma.purchase.findUnique({ where: { id } });
+      const purchase = await prisma.purchase.findUnique({
+        where: { id },
+        include: { user: true, items: true, order: true },
+      });
       if (!purchase) return res.status(404).json({ error: "Purchase não encontrada" });
 
-      // tenta parsear o campo purchasedProducts (se for JSON string)
-      let productsParsed = purchase.purchasedProducts;
-      try {
-        productsParsed = JSON.parse(purchase.purchasedProducts);
-      } catch (e) {
-        // se não for JSON, mantemos a string original
-      }
-
-      return res.json({ ...purchase, purchasedProducts: productsParsed });
+      return res.json(purchase);
     } catch (err) {
       console.error("PurchaseController.show error:", err);
       return next(err);

@@ -2,13 +2,14 @@ POST http://localhost:3000/users HTTP/1.1
 content-type: application/json
 
 {
-  "pass": "123456",
-  "email": "admin@teste.com",
-  "name": "admin",
-  "birth": "2010-04-16",
-  "creditCard": "99999999999999",
-  "address": "Rua Eclesiastes",
-  "phone": "1199999999",
+  "pass": "bolo123",
+  "email": "maria@doces.com",
+  "name": "Maria dos Doces",
+  "birth": "1985-06-15",
+  "creditCard": "5555-6666-7777-8888",
+  "address": "Rua dos Sabores, 45, Cidade X",
+  "phone": "99988-7766",
   "permission": true
 }
+
 

@@ -5,11 +5,11 @@ import prisma from "../prisma.js";
 export const PaymentController = {
   async store(req, res, next) {
     try {
-      const { pix, credit_card, status, value, user, date, order_detail } =
+      const { pix, credit_card, paymentStatus, value, user, date, order_detail } =
         req.body;
 
       const p = await prisma.payment.create({
-        data: { pix, credit_card, status, value, user, date, order_detail },
+        data: { pix, credit_card, paymentStatus, value, user, date, order_detail },
       });
       res.status(201).json(p);
     } catch (err) {

@@ -2,13 +2,5 @@ POST http://localhost:3000/purchases
 Content-Type: application/json
 
 {
-  "purchaseClientName": "João Silva",
-  "purchaseClientAddress": "Rua A, 123",
-  "purchasedProducts": [
-    { "stockId": 5, "name": "Produto X", "qty": 2, "price": 49.9 },
-    { "stockId": 7, "name": "Produto Y", "qty": 1, "price": 29.9 }
-  ],
-  "purchasePaymentForm": "PIX",
-  "purchasedQuantity": 3,
-  "purchasePrice": 129.7
+  "orderId": 3
 }

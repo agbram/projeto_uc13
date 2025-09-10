@@ -29,7 +29,7 @@ model Payment {
   id            Int      @id @default(autoincrement())
   pix           String
   credit_card   String
-  status        Boolean
+  paymentStatus Boolean @map("status")
   value         Int
   user          String
   date          DateTime
@@ -59,6 +59,7 @@ model User {
   updatedAt DateTime @map("updated_at") @updatedAt
 
   orders     Order[]
+  purchases  Purchase[]   // <-- adiciona aqui
   userRules  UserRule[] // relação com regras
 
   @@map("users")
@@ -77,7 +78,8 @@ model Order {
   paymentId Int?     @map("payment_id")
   payment   Payment? @relation(fields: [paymentId], references: [id])
 
-  carts Cart[]
+  carts     Cart[]
+  purchases Purchase[]   // <-- adiciona aqui
 
   @@map("orders")
 }
@@ -131,21 +133,44 @@ model UserRule {
 // ========== Bruno ==========
 model Purchase {
   id                  Int      @id @default(autoincrement())
-  purchaseClientName  String   @map("purchase_client_name")
-  purchaseClientAddress String @map("purchase_client_address")
-  purchasedProducts   String   @map("purchased_products")
+
   purchasePaymentForm String   @map("purchase_payment_form")
   purchasedQuantity   Int      @map("purchased_quantity")
   purchasePrice       Float    @map("purchase_price")
 
-  isFinished Boolean @map("is_finished")
-  isShipped  Boolean @map("is_shipped")
+  isFinished Boolean @map("is_finished") @default(false)
+  isShipped  Boolean @map("is_shipped")  @default(false)
 
   createdAt DateTime @map("created_at") @default(now())
   updatedAt DateTime @map("updated_at") @updatedAt
 
+  // relações
+  userId  Int    @map("user_id")
+  user    User   @relation(fields: [userId], references: [id])
+
+  orderId Int?   @map("order_id")
+  order   Order?  @relation(fields: [orderId], references: [id])
+
+  items PurchaseItem[]
+
   @@map("purchases")
 }
+
+model PurchaseItem {
+  id         Int       @id @default(autoincrement())
+  purchaseId Int
+  purchase   Purchase  @relation(fields: [purchaseId], references: [id])
+
+  product    String
+  quantity   Int
+  price      Float
+
+  createdAt DateTime @map("created_at") @default(now())
+  updatedAt DateTime @map("updated_at") @updatedAt
+
+  @@map("purchase_items")
+}
+
 
 // ========== Jean Fiel ==========
 model Stock {
