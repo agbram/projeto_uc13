@@ -3,8 +3,8 @@ POST http://localhost:3000/stocks HTTP/1.1
 content-type: application/json
         
         {
-        "productName": "teste",
-        "productType": "teste",
+        "productName": "Bolo",
+        "productType": "Bolo",
         "productPrice": 9, 
         "isInStock": true,
         "amountInStock": 10 
@@ -12,4 +12,14 @@ content-type: application/json
 
 ###Listando todos os estoques
 GET http://localhost:3000/stocks HTTP/1.1
+content-type: application/json
+
+
+###Listando um estoque pelo nome
+GET http://localhost:3000/stocks?productName=Bolo HTTP/1.1
+content-type: application/json
+
+
+###Listando um estoque pelo preço
+GET http://localhost:3000/stocks?productPrice=9 HTTP/1.1
 content-type: application/json

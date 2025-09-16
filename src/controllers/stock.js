@@ -32,7 +32,12 @@ export const StockController = {
 
   // Listar todos os stocks GET /stocks
   async index (req, res, next) {
-    const stocks = await prisma.stock.findMany();
+    const stocks = await prisma.stock.findMany({
+      where:{
+        OR: [{productPrice: Number(req.query.productPrice)},]
+      }
+    }
+    );
     res.status(200).json(stocks);
   }
 };
