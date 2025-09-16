@@ -25,4 +25,7 @@ export const CartController = {
       next(err);
     }
   },
+  async index (req, res, next) {
+    const carts = await prisma.cart.findMany();
+    res.status(200).json(carts);
 };

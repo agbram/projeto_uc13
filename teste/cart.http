@@ -1,3 +1,4 @@
+###Criando um novo carrinho
 POST http://localhost:3000/carts HTTP/1.1
 content-type: application/json
 
@@ -5,3 +6,10 @@ content-type: application/json
     "productQuantity": ,
     "stockId": 
 }
+
+
+###Listando todos os carrinhos
+GET http://localhost:3000/carts HTTP/1.1
+content-type: application/json
+
+
