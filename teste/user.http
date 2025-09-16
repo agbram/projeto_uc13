@@ -3,12 +3,12 @@ content-type: application/json
 
 {
   "pass": "123456",
-  "email": "teste@gmail.com",
-  "name": "teste",
+  "email": "gustavo@gmail.com",
+  "name": "gustavo",
   "birth": "2005-07-17",
   "creditCard": "9999999999",
   "address": "teste 123, teste",
-  "phone": "1699999999999",
+  "phone": "16992455837",
   "permission": true
 }
 
@@ -17,6 +17,18 @@ content-type: application/json
 GET http://localhost:3000/users HTTP/1.1
 content-type: application/json
 
+###GET PARA USERS com o name 'teste'
 
+GET http://localhost:3000/users?name=testeloja HTTP/1.1
+content-type: application/json
+
+###GET PARA USERS com o email 'teste'
+
+GET http://localhost:3000/users?email=teste@gmail.com HTTP/1.1
+content-type: application/json
+
+###GET PARA USERS com phone
+GET http://localhost:3000/users?phone=16992455837 HTTP/1.1
+content-type: application/json
 
 
