@@ -24,3 +24,8 @@ content-type: application/json
   "userStatus": true,
   "productStatus": true 
 }
+
+###GET PARA RULES  
+
+GET http://localhost:3000/rules HTTP/1.1
+Content-Type: application/json

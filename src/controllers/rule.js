@@ -59,4 +59,8 @@ export const RuleController = {
       next(err);
     }
   },
+   async index(req,res,next){
+      const rules = await prisma.rule.findMany()
+      res.status(200).json(rules)
+    },
 };
