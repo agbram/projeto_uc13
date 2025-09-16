@@ -2,5 +2,5 @@ POST http://localhost:3000/purchases
 Content-Type: application/json
 
 {
-  "orderId": 
+  "orderId": 1
 }
