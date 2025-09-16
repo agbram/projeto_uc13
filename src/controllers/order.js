@@ -1,6 +1,8 @@
 import prisma from "../prisma.js";
 
 export const OrderController = {
+  
+  // Criar um novo pedido POST /orders
   async store(req, res, next) {
     try {
       const { userId, paymentId, cartIds } = req.body;
@@ -53,4 +55,10 @@ export const OrderController = {
       next(err);
     }
   },
+  
+  // Listar todos os pedidos GET /orders
+  async index (req, res, next) {
+  const orders = await prisma.order.findMany()
+  res.status(200).json(orders);
+  }
 };

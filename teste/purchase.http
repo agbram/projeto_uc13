@@ -1,6 +1,11 @@
+### Criando uma compra
 POST http://localhost:3000/purchases
 Content-Type: application/json
 
 {
   "orderId": 1
 }
+
+### Listando todas as compras
+GET http://localhost:3000/purchases
+Content-Type: application/json

@@ -2,6 +2,8 @@
 import prisma from "../prisma.js";
 
 export const StockController = {
+  
+// Criar um novo stock POST /stocks
   async store(req, res, next) {
     try {
       const {
@@ -27,4 +29,10 @@ export const StockController = {
       next(err);
     }
   },
+
+  // Listar todos os stocks GET /stocks
+  async index (req, res, next) {
+    const stocks = await prisma.stock.findMany();
+    res.status(200).json(stocks);
+  }
 };

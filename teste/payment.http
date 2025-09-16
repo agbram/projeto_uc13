@@ -1,3 +1,4 @@
+###Criando um novo pagamento
 POST http://localhost:3000/payments
 Content-Type: application/json
 
@@ -10,3 +11,7 @@ Content-Type: application/json
   "date": "",
   "order_detail": ""
 }
+
+###Listando todos os pagamentos
+GET http://localhost:3000/payments
+Content-Type: application/json

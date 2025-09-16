@@ -1,6 +1,8 @@
 import prisma from "../prisma.js";
 
 export const CartController = {
+  
+  // Criar um novo carrinho POST /carts
   async store(req, res, next) {
     try {
       const { productQuantity, stockId } = req.body;

@@ -1,3 +1,4 @@
+###Criando um estoque / Adicionando um produto ao estoque
 POST http://localhost:3000/stocks HTTP/1.1
 content-type: application/json
         
@@ -8,3 +9,7 @@ content-type: application/json
         "isInStock": true,
         "amountInStock": 10 
         }
+
+###Listando todos os estoques
+GET http://localhost:3000/stocks HTTP/1.1
+content-type: application/json
