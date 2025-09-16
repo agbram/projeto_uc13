@@ -3,6 +3,13 @@ POST http://localhost:3000/carts HTTP/1.1
 content-type: application/json
 
 {
-    "productQuantity": 1,
-    "stockId": 1
+    "productQuantity": ,
+    "stockId": 
 }
+
+
+###Listando todos os carrinhos
+GET http://localhost:3000/carts HTTP/1.1
+content-type: application/json
+
+

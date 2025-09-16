@@ -25,7 +25,10 @@ export const CartController = {
       next(err);
     }
   },
+  
+  // Listar todos os carrinhos GET /carts
   async index (req, res, next) {
     const carts = await prisma.cart.findMany();
     res.status(200).json(carts);
+  }
 };
