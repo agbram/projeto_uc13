@@ -2,9 +2,9 @@ POST http://localhost:3000/stocks HTTP/1.1
 content-type: application/json
         
         {
-        "productName": "",
-        "productType": "",
-        "productPrice": , 
-        "isInStock": ,
-        "amountInStock": 
+        "productName": "teste",
+        "productType": "teste",
+        "productPrice": 9, 
+        "isInStock": true,
+        "amountInStock": 10 
         }
