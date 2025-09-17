@@ -19,7 +19,7 @@ content-type: application/json
 
 ###GET PARA USERS com o name 'teste'
 
-GET http://localhost:3000/users?name=testeloja HTTP/1.1
+GET http://localhost:3000/users?name=teste HTTP/1.1
 content-type: application/json
 
 ###GET PARA USERS com o email 'teste'
@@ -29,6 +29,14 @@ content-type: application/json
 
 ###GET PARA USERS com phone
 GET http://localhost:3000/users?phone=16992455837 HTTP/1.1
+content-type: application/json
+
+###GET PARA USERS pelo id
+GET http://localhost:3000/users/2 HTTP/1.1
+content-type: application/json
+
+###Deletar algum USERS pelo id
+DELETE http://localhost:3000/users/2 HTTP/1.1
 content-type: application/json
 
 
