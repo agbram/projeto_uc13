@@ -9,3 +9,12 @@ Content-Type: application/json
 ### Listando todas as compras
 GET http://localhost:3000/purchases
 Content-Type: application/json
+
+### show
+GET http://localhost:3000/purchases/1
+Content-Type: application/json
+
+
+### delete
+DELETE http://localhost:3000/purchases/1
+Content-Type: application/json
