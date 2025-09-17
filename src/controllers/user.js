@@ -15,7 +15,7 @@ export const UserController = {
         creditCard,
         address,
         phone,
-        permission
+        permission,
       } = req.body;
 
       //guardando
@@ -28,7 +28,7 @@ export const UserController = {
           creditCard,
           address,
           phone,
-          permission: Boolean(permission)
+          permission: Boolean(permission),
         },
       });
       console.log("User created:", u);
@@ -39,9 +39,13 @@ export const UserController = {
       next(err);
     }
   },
-  async index(req,res,next){
-      const users = await prisma.user.findMany()
+  async index(req, res, next) {
+    const users = await prisma.user.findMany({
+      where: {
+        OR: [{ name: req.query.name }, { email: req.query.email }, {phone: req.query.phone}],
+      },
+    });
 
-      res.status(200).json(users)
-    }
+    res.status(200).json(users);
+  },
 };
