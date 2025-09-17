@@ -96,5 +96,39 @@ export const PurchaseController = {
       console.error("PurchaseController.show error:", err);
       return next(err);
     }
-  }
+  },
+    async show(req, res, _next){
+      try{
+
+        const id =Number(req.params.id);
+  
+        const p = await prisma.purchases.findUniqueOrThrow(
+          {
+            where: {id}
+          });
+           res.status(200).json(p);
+      } catch (err) {
+        res.status(404).json({error: "NÃO ENCONTRADO :("})
+      }
+
+    },
+
+    async del(req, res, _next){
+
+      try{
+
+        const id =Number(req.params.id);
+  
+        const p = await prisma.purchases.delete(
+          {
+            where: {id}
+          });
+
+           res.status(200).json(p);
+      } catch (err) {
+        res.status(404).json({error: "NÃO ENCONTRADO :("})
+      }
+
+    }
+
 };

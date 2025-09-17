@@ -10,4 +10,10 @@ router.post("/", PaymentController.store);
 // Listar todos os pagamentos GET /payments
 router.get("/", PaymentController.index);
 
+//id
+router.get("/:id",PaymentController.show)
+
+//delete
+router.delete("/:id",PaymentController.del)
+
 export default router;
