@@ -39,13 +39,59 @@ export const UserController = {
       next(err);
     }
   },
-  async index(req, res, next) {
-    const users = await prisma.user.findMany({
-      where: {
-        OR: [{ name: req.query.name }, { email: req.query.email }, {phone: req.query.phone}],
-      },
-    });
+
+async index(req, res, _next) {
+  try {
+    const { name, email, phone } = req.query;
+
+    let users;
+
+    if (name || email || phone) {
+      users = await prisma.user.findMany({
+        where: {
+          OR: [
+            name ? { name } : undefined,
+            email ? { email } : undefined,
+            phone ? { phone } : undefined,
+          ].filter(Boolean),
+        },
+      });
+    } else {
+      // se nao tiver filtro, retorna todos
+      users = await prisma.user.findMany();
+    }
 
     res.status(200).json(users);
+  } catch (err) {
+    res.status(500).json({ error: "Erro ao buscar usuarios!" });
+  }
+},
+
+
+  async show(req, res, _next) {
+    try {
+      const id = Number(req.params.id);
+
+      const u = await prisma.user.findFirstOrThrow({
+        where: { id },
+      });
+
+      res.status(200).json(u);
+    } catch (err) {
+      res.status(404).json("Error: Id nao encontrado!");
+    }
+  },
+
+  async del(req, res, _next) {
+    try {
+      const id = Number(req.params.id);
+
+      const u = await prisma.user.delete({
+        where: { id },
+      });
+      res.status(200).json(u);
+    } catch (err) {
+      res.status(404).json("Error: Id nao encontrado!");
+    }
   },
 };

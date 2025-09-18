@@ -5,4 +5,10 @@ const router = Router();
 
 router.post("/", PurchaseController.store);
 
+router.get("/",PurchaseController.index);
+
+router.get("/:id",PurchaseController.show);
+
+router.delete("/:id",PurchaseController.del);
+
 export default router;

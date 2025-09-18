@@ -63,4 +63,7 @@ export const RuleController = {
       const rules = await prisma.rule.findMany()
       res.status(200).json(rules)
     },
+
+    
+    
 };

@@ -11,7 +11,7 @@ export const PaymentController = {
         req.body;
 
       const p = await prisma.payment.create({
-        data: { pix, credit_card, paymentStatus, value, user, date, order_detail },
+        data: { pix, credit_card, status: Boolean(paymentStatus), value, user, date: new Date(date), order_detail },
       });
       res.status(201).json(p);
     } catch (err) {
@@ -21,7 +21,45 @@ export const PaymentController = {
 
   // Listar todos os pagamentos GET /payments
   async index(req, res, next) {
-    const payments = await prisma.payment.findMany();
+    let query = {}
+    
+    if (req.query.user) query = {user: req.query.user};
+
+    const payments = await prisma.payment.findMany({
+      where: query
+    });
+
     res.status(200).json(payments);
-  }
+  },
+
+  async show(req, res, _next){
+    try{
+      const id = Number(req.params.id);
+      
+      const p = await prisma.payment.findFirstOrThrow({
+        where: {id}
+      });
+  
+      req.status(200).json(p)
+
+    }catch(err){
+      res.status(404).json({error: "Não encontrado :( "})
+    }
+  },
+
+  async del(req, res, _next){
+    try{
+      const id = Number(req.params.id);
+      
+      const p = await prisma.payment.delete({
+        where: {id}
+      });
+  
+      req.status(200).json(p)
+
+    }catch(err){
+      res.status(404).json({error: "Não encontrado :("})
+    }
+  },
+
 };
