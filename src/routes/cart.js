@@ -11,6 +11,9 @@ router.get("/", CartController.index);
 
 
 // Obter um carrinho específico GET /carts/:id
-Router.get("/:id", CartController.show);
+router.get("/:id", CartController.show);
+
+// Deletar um carrinho DELETE /carts/:id
+router.delete("/:id", CartController.delete);
 
 export default router;
