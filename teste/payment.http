@@ -17,13 +17,13 @@ GET http://localhost:3000/payments
 Content-Type: application/json
 
 ###Listando todos os pagamentos
-GET http://localhost:3000/payments?user
+GET http://localhost:3000/payments?user=marcius
 Content-Type: application/json
 
-###
+### da o show em um pagamento
 GET http://localhost:3000/payments/2
 Content-Type: application/json
 
 ###
-DELETE http://localhost:3000/payments/1
+DELETE http://localhost:3000/payments/2
 Content-Type: application/json

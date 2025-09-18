@@ -125,7 +125,7 @@ export const PurchaseController = {
           });
 
            res.status(200).json(p);
-      } catch (err) {
+      }catch(err){
         res.status(404).json({error: "NÃO ENCONTRADO :("})
       }
 

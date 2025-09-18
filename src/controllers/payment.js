@@ -35,13 +35,14 @@ export const PaymentController = {
   async show(req, res, _next){
     try{
       const id = Number(req.params.id);
+      //console.log(id)
       
       const p = await prisma.payment.findFirstOrThrow({
         where: {id}
       });
+      //console.log(p)
   
-      req.status(200).json(p)
-
+      res.status(200).json(p);
     }catch(err){
       res.status(404).json({error: "Não encontrado :( "})
     }
@@ -55,7 +56,7 @@ export const PaymentController = {
         where: {id}
       });
   
-      req.status(200).json(p)
+      res.status(200).json(p);
 
     }catch(err){
       res.status(404).json({error: "Não encontrado :("})
