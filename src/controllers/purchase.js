@@ -5,57 +5,6 @@ export const PurchaseController = {
   // cria uma purchase a partir de um order
   async store(req, res, next) {
     try {
-      const { orderId } = req.body;
-
-      if (!orderId) {
-        return res.status(400).json({ error: "orderId é obrigatório." });
-      }
-
-      // busca o order e inclui os relacionamentos
-      const order = await prisma.order.findUnique({
-        where: { id: parseInt(orderId) },
-        include: {
-          carts: { include: { stock: true } },
-          payment: true,
-          user: true,
-        },
-      });
-
-      if (!order) {
-        return res.status(404).json({ error: "Order não encontrado." });
-      }
-
-      // monta o array de produtos do carrinho
-      const items = order.carts.map(c => ({
-        product: c.stock.productName,
-        quantity: c.productQuantity,
-        price: c.stock.productPrice,
-      }));
-
-      // calcula totais
-      const totalQuantity = items.reduce((acc, p) => acc + p.quantity, 0);
-      const totalPrice = items.reduce((acc, p) => acc + p.quantity * p.price, 0);
-
-      // cria a purchase com itens
-      const purchase = await prisma.purchase.create({
-        data: {
-          userId: order.userId,
-          orderId: order.id,
-          purchasePaymentForm: order.payment?.credit_card ? "credit_card" : "pix",
-          purchasedQuantity: totalQuantity,
-          purchasePrice: totalPrice,
-          isFinished: true,
-          isShipped: false,
-          items: {
-            create: items,
-          },
-        },
-        include: {
-          items: true,
-          user: true,
-          order: true,
-        },
-      });
 
       return res.status(201).json(purchase);
     } catch (err) {
