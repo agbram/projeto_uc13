@@ -68,9 +68,7 @@ export const PurchaseController = {
   async index(req, res, next) {
     try {
       const purchases = await prisma.purchase.findMany({
-        orderBy: { createdAt: "desc" },
-        take: 100,
-        include: { user: true, items: true, order: true },
+        orderBy: { createdAt: "desc" }
       });
       return res.json(purchases);
     } catch (err) {
@@ -97,7 +95,7 @@ export const PurchaseController = {
       return next(err);
     }
   },
-    async show(req, res, _next){
+  async show(req, res, _next){
       try{
 
         const id =Number(req.params.id);
@@ -112,8 +110,17 @@ export const PurchaseController = {
       }
 
     },
+    async put(req, ret, _next){
+      try{
+        const id =Number(req.params.id);
+        let query  = {}
 
-    async del(req, res, _next){
+      }catch(err){
+        res.status(404).json({error: "NÃO ENCONTRADO :("})
+      }
+    },
+
+  async del(req, res, _next){
 
       try{
 
