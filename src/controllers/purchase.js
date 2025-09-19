@@ -117,7 +117,7 @@ export const PurchaseController = {
 
       try{
 
-        const id =Number(req.params.id);
+        const id = Number(req.params.id);
   
         const p = await prisma.purchases.delete(
           {
