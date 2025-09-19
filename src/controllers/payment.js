@@ -11,7 +11,7 @@ export const PaymentController = {
         req.body;
 
       const p = await prisma.payment.create({
-        data: { pix, credit_card, status: Boolean(paymentStatus), value, user, date: new Date(date), order_detail },
+        data: { pix, credit_card, paymentStatus: Boolean(paymentStatus), value, user, date: new Date(date), order_detail },
       });
       res.status(201).json(p);
     } catch (err) {
@@ -35,15 +35,38 @@ export const PaymentController = {
   async show(req, res, _next){
     try{
       const id = Number(req.params.id);
+      //console.log(id)
       
       const p = await prisma.payment.findFirstOrThrow({
         where: {id}
       });
+      //console.log(p)
   
-      req.status(200).json(p)
-
+      res.status(200).json(p);
     }catch(err){
-      res.status(404).json({error: "Não encontrado :( "})
+      res.status(404).json({error: "Não encontrado :("})
+    }
+  },
+  async put(req, res, _next){
+    try{
+      const id = Number(req.params.id);
+
+      let query = {}
+      if(req.body.pix) query.pix = req.body.pix;
+      if(req.body.credit_card) query.credit_card = req.body.credit_card;
+      if(req.body.paymentStatus) query.paymentStatus = req.body.paymentStatus;
+      if(req.body.value) query.value = req.body.value;
+      if(req.body.user) query.user = req.body.user;
+      if(req.body.date) query.date = req.body.date;
+      if(req.body.order_detail) query.order_detail = req.body.order_detail;
+
+      const u = prisma.payment.update({
+        where: {id},
+        data:query
+      })
+      res.status(200).json(u)
+    }catch(err){
+      res.status(404).json({error: "Não encontrado :("})
     }
   },
 
@@ -55,7 +78,7 @@ export const PaymentController = {
         where: {id}
       });
   
-      req.status(200).json(p)
+      res.status(200).json(p);
 
     }catch(err){
       res.status(404).json({error: "Não encontrado :("})

@@ -3,7 +3,13 @@ POST http://localhost:3000/purchases
 Content-Type: application/json
 
 {
-  "orderId": 1
+  "orderId": 1,
+  "purchasePaymentForm": "pix",
+  "purchasedQuantity": 12,
+  "purchasePrice": 30.50,
+  "userId":12,
+  "isFinished":true,
+  "isShipped":true,
 }
 
 ### Listando todas as compras
