@@ -7,8 +7,9 @@ export const PaymentController = {
   // Criar um novo pagamento POST /payments
   async store(req, res, next) {
     try {
-      const { pix, credit_card, paymentStatus, value, user, date, order_detail } =
-        req.body;
+      const { pix, credit_card, paymentStatus, value, user, date, order_detail } =  req.body;
+
+    
 
       const p = await prisma.payment.create({
         data: { pix, credit_card, paymentStatus: Boolean(paymentStatus), value, user, date: new Date(date), order_detail },
